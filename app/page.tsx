@@ -2,6 +2,7 @@
 import TradingCapital from "@/components/TradingCapital/TradingCapital";
 import { useEffect } from "react";
 import data from "@/data.min.json";
+import BotsList from "@/components/BotsList/BotsList";
 
 export default function Home() {
   useEffect(() => {
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <TradingCapital data={data} />
+      <BotsList bots={data.bots} />
     </>
   );
 }
