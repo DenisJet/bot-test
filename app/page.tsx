@@ -7,6 +7,7 @@ import TimeRangePicker, {
   TimeRange,
 } from "@/components/TimeRangePicker/TimeRangePicker";
 import { useState } from "react";
+import { Chart } from "@/components/Chart/Chart";
 
 export default function Home() {
   const [activeTimeRange, setActiveTimeRange] = useState<TimeRange>("all_time");
@@ -32,6 +33,7 @@ export default function Home() {
   return (
     <>
       <TradingCapital data={data} />
+      <Chart />
       <BotsList bots={data.bots} activeTimeRange={activeTimeRange} />
       <TimeRangePicker
         activeTimeRange={activeTimeRange}
