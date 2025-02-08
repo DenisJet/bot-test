@@ -8,11 +8,11 @@ export default function TimeRangePicker({
   setActiveTimeRange: (range: TimeRange) => void;
 }) {
   return (
-    <div className="px-2 text-sm text-gray-500 flex justify-between items-center">
+    <div className="px-2 text-sm text-gray-500 flex justify-between items-center gap-1 whitespace-nowrap">
       <p>Time Range:</p>
       <button
         onClick={() => setActiveTimeRange("24h")}
-        className={`border rounded-full px-1 ${
+        className={`border rounded-full px-1 w-full ${
           activeTimeRange === "24h" && "text-white border-white"
         }`}
       >
@@ -20,7 +20,7 @@ export default function TimeRangePicker({
       </button>
       <button
         onClick={() => setActiveTimeRange("7d")}
-        className={`border rounded-full px-1 ${
+        className={`border rounded-full px-1 w-full ${
           activeTimeRange === "7d" && "text-white border-white"
         }`}
       >
@@ -28,7 +28,7 @@ export default function TimeRangePicker({
       </button>
       <button
         onClick={() => setActiveTimeRange("30d")}
-        className={`border rounded-full px-1 ${
+        className={`border rounded-full px-1 w-full ${
           activeTimeRange === "30d" && "text-white border-white"
         }`}
       >
@@ -36,7 +36,7 @@ export default function TimeRangePicker({
       </button>
       <button
         onClick={() => setActiveTimeRange("all_time")}
-        className={`border rounded-full px-1 ${
+        className={`border rounded-full px-1 w-full ${
           activeTimeRange === "all_time" && "text-white border-white"
         }`}
       >
