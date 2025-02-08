@@ -3,9 +3,13 @@ import TradingCapital from "@/components/TradingCapital/TradingCapital";
 import BotsList from "@/components/BotsList/BotsList";
 import { Skeleton } from "@/components/ui/skeleton";
 import useTradingData from "@/hooks/useTradingData";
-import TimeRangePicker from "@/components/TimeRangePicker/TimeRangePicker";
+import TimeRangePicker, {
+  TimeRange,
+} from "@/components/TimeRangePicker/TimeRangePicker";
+import { useState } from "react";
 
 export default function Home() {
+  const [activeTimeRange, setActiveTimeRange] = useState<TimeRange>("all_time");
   const { data, isLoading } = useTradingData();
 
   if (isLoading) {
@@ -28,8 +32,11 @@ export default function Home() {
   return (
     <>
       <TradingCapital data={data} />
-      <BotsList bots={data.bots} />
-      <TimeRangePicker />
+      <BotsList bots={data.bots} activeTimeRange={activeTimeRange} />
+      <TimeRangePicker
+        activeTimeRange={activeTimeRange}
+        setActiveTimeRange={setActiveTimeRange}
+      />
     </>
   );
 }
