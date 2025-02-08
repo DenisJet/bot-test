@@ -3,6 +3,7 @@ import TradingCapital from "@/components/TradingCapital/TradingCapital";
 import BotsList from "@/components/BotsList/BotsList";
 import { Skeleton } from "@/components/ui/skeleton";
 import useTradingData from "@/hooks/useTradingData";
+import TimeRangePicker from "@/components/TimeRangePicker/TimeRangePicker";
 
 export default function Home() {
   const { data, isLoading } = useTradingData();
@@ -28,6 +29,7 @@ export default function Home() {
     <>
       <TradingCapital data={data} />
       <BotsList bots={data.bots} />
+      <TimeRangePicker />
     </>
   );
 }

@@ -3,7 +3,7 @@ import BotIcon from "@/public/bot.svg";
 
 export default function BotsList({ bots }: { bots: Bot[] }) {
   return (
-    <div className="px-4">
+    <div className="px-2">
       <ul className="grid grid-cols-3 gap-1">
         {bots &&
           bots.map((bot) => {

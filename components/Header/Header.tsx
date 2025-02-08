@@ -2,7 +2,7 @@ import { HamburgerMenuIcon, UpdateIcon } from "@radix-ui/react-icons";
 
 export default function Header() {
   return (
-    <header className="flex justify-between align-center p-4 text-gray-500">
+    <header className="flex justify-between align-center px-2 py-4 text-gray-500">
       <button>
         <HamburgerMenuIcon width={24} height={24} />
       </button>

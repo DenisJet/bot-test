@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${roboto.variable} antialiased`}>
         <div className="flex flex-col h-full max-w-3xl m-auto">
           <Header />
-          <main className="h-full">{children}</main>
+          <main className="h-full flex flex-col gap-2">{children}</main>
           <Footer />
         </div>
       </body>
