@@ -5,9 +5,13 @@ import { TimeRange } from "../TimeRangePicker/TimeRangePicker";
 export default function BotsList({
   bots,
   activeTimeRange,
+  activeBot,
+  setActiveBot,
 }: {
   bots: Bot[];
   activeTimeRange: TimeRange;
+  activeBot: string;
+  setActiveBot: (botName: string) => void;
 }) {
   return (
     <div className="px-2">
@@ -15,12 +19,18 @@ export default function BotsList({
         {bots &&
           bots.map((bot) => {
             const botName = bot.name.split("_").join("").toUpperCase();
+            const isActiveBot = activeBot === bot.name;
             const botProfit = bot[`${activeTimeRange}`];
             const profitColor =
               Number(botProfit) > 0 ? "text-green-500" : "text-red-500";
             return (
               <li key={bot.name}>
-                <div className="border rounded-sm bg-gray-800 p-3 w-full h-full flex flex-col justify-center items-center">
+                <div
+                  onClick={() => setActiveBot(bot.name)}
+                  className={`border rounded-sm px-3 py-2 w-full h-full flex flex-col justify-center items-center cursor-pointer ${
+                    isActiveBot ? "bg-gray-700" : "bg-gray-800"
+                  }`}
+                >
                   <BotIcon
                     className={`${
                       bot.name === "yellow_bot"

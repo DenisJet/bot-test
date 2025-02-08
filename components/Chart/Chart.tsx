@@ -7,15 +7,17 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { getRandomNumber } from "@/helpers/getRandomNumber";
+import { useEffect, useState } from "react";
 
-const chartData = [
-  { day: "Mon", Profit: 186 },
-  { day: "Tue", Profit: 305 },
-  { day: "Wed", Profit: 237 },
-  { day: "Thu", Profit: 73 },
-  { day: "Fri", Profit: 209 },
-  { day: "Sat", Profit: 214 },
-  { day: "Sun", Profit: 214 },
+const defaultChartData = [
+  { day: "Monday", Profit: 186 },
+  { day: "Tuesday", Profit: 145 },
+  { day: "Wednesday", Profit: 77 },
+  { day: "Thursday", Profit: 35 },
+  { day: "Friday", Profit: 98 },
+  { day: "Saturday", Profit: 136 },
+  { day: "Sunday", Profit: 189 },
 ];
 
 const chartConfig = {
@@ -25,9 +27,23 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function Chart() {
+export function Chart({ activeBot }: { activeBot: string }) {
+  const [chartData, setChartData] = useState(defaultChartData);
+
+  useEffect(() => {
+    setChartData([
+      { day: "Monday", Profit: getRandomNumber(50, 200) },
+      { day: "Tuesday", Profit: getRandomNumber(50, 200) },
+      { day: "Wednesday", Profit: getRandomNumber(50, 200) },
+      { day: "Thursday", Profit: getRandomNumber(50, 200) },
+      { day: "Friday", Profit: getRandomNumber(50, 200) },
+      { day: "Saturday", Profit: getRandomNumber(50, 200) },
+      { day: "Sunday", Profit: getRandomNumber(50, 200) },
+    ]);
+  }, [activeBot]);
+
   return (
-    <Card className="bg-background">
+    <Card className="bg-background border-none">
       <CardContent className="p-0">
         <ChartContainer config={chartConfig}>
           <AreaChart
@@ -39,7 +55,12 @@ export function Chart() {
             }}
           >
             <CartesianGrid />
-            <XAxis dataKey="day" axisLine={false} />
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickMargin={8}
+              tickFormatter={(value) => value.slice(0, 3)}
+            />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="line" />}

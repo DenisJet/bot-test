@@ -10,8 +10,9 @@ import { useState } from "react";
 import { Chart } from "@/components/Chart/Chart";
 
 export default function Home() {
-  const [activeTimeRange, setActiveTimeRange] = useState<TimeRange>("all_time");
   const { data, isLoading } = useTradingData();
+  const [activeTimeRange, setActiveTimeRange] = useState<TimeRange>("all_time");
+  const [activeBot, setActiveBot] = useState<string>("");
 
   if (isLoading) {
     return (
@@ -33,8 +34,13 @@ export default function Home() {
   return (
     <>
       <TradingCapital data={data} />
-      <Chart />
-      <BotsList bots={data.bots} activeTimeRange={activeTimeRange} />
+      <Chart activeBot={activeBot} />
+      <BotsList
+        bots={data.bots}
+        activeTimeRange={activeTimeRange}
+        activeBot={activeBot}
+        setActiveBot={setActiveBot}
+      />
       <TimeRangePicker
         activeTimeRange={activeTimeRange}
         setActiveTimeRange={setActiveTimeRange}
