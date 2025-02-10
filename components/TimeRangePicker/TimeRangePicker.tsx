@@ -1,12 +1,14 @@
 export type TimeRange = "all_time" | "24h" | "7d" | "30d" | "60d" | "90d";
 
+type TimeRangePickerProps = {
+  activeTimeRange: string;
+  setActiveTimeRange: (range: TimeRange) => void;
+};
+
 export default function TimeRangePicker({
   activeTimeRange,
   setActiveTimeRange,
-}: {
-  activeTimeRange: string;
-  setActiveTimeRange: (range: TimeRange) => void;
-}) {
+}: TimeRangePickerProps) {
   return (
     <div className="px-2 text-sm text-gray-500 flex justify-between items-center gap-1 whitespace-nowrap">
       <p>Time Range:</p>
